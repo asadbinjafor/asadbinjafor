@@ -7,7 +7,6 @@
 <p>
   <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-Asad_Portfolio-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
   <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-  <a href="https://drive.google.com/file/d/1UZsWxhRfGYXg-u8bhBxMTHVysRUzuBuV/view?usp=sharing"><img src="https://img.shields.io/badge/RESUME-Download-2563EB?style=for-the-badge&logo=googledrive&logoColor=white" alt="Resume"/></a>
 </p>
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=8B6CEF&center=true&vCenter=true&width=620&lines=Building+clean%2C+purposeful+software;Full-Stack+Web+%7C+Java+%7C+C%23+.NET;Open+to+Software+Development+Internships" alt="Typing animation"/>
@@ -51,7 +50,8 @@ portfolio: asadbinjafor.github.io/Asad_Portfolio
 | 06 | **3D City & Village Simulation** | C++, OpenGL, GLUT | [3D_Simulation](https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics) |
 
 <p align="center">
-  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/View_All_Projects-Portfolio-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="View all projects"/></a>
+  <a href="https://github.com/asadbinjafor?tab=repositories"><img src="https://img.shields.io/badge/View_All_Projects-GitHub_Repos-181717?style=for-the-badge&logo=github&logoColor=white" alt="View all projects on GitHub"/></a>
+  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-Website-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio website"/></a>
 </p>
 
 ---
