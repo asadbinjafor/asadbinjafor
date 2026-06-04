@@ -90,16 +90,7 @@ portfolio: asadbinjafor.github.io/Asad_Portfolio
 <div align="center">
 
   <a href="https://github.com/asadbinjafor?tab=repositories">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=asadbinjafor&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true&amp;rank_icon=github" alt="GitHub stats"/>
-  </a>
-  <a href="https://github.com/asadbinjafor?tab=repositories">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asadbinjafor&amp;layout=compact&amp;theme=tokyonight&amp;hide_border=true" alt="Top languages"/>
-  </a>
-
-  <br/>
-
-  <a href="https://github.com/asadbinjafor?tab=repositories">
-    <img src="https://streak-stats.demolab.com/?user=asadbinjafor&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub streak"/>
+    <img src="https://streak-stats.demolab.com/?user=asadbinjafor&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub contribution streak"/>
   </a>
 
 </div>
