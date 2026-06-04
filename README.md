@@ -87,19 +87,22 @@ portfolio: asadbinjafor.github.io/Asad_Portfolio
 
 ## 📊 GitHub Analytics
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=asadbinjafor&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" height="170" alt="GitHub stats"/>
-  &nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=asadbinjafor&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" height="170" alt="Top languages"/>
-</p>
+<div align="center">
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=asadbinjafor&theme=tokyonight&hide_border=true&date_format=M%20j%5B%2C%20Y%5D" alt="GitHub streak"/>
-</p>
+  <a href="https://github.com/asadbinjafor?tab=repositories">
+    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=asadbinjafor&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true&amp;rank_icon=github" alt="GitHub stats"/>
+  </a>
+  <a href="https://github.com/asadbinjafor?tab=repositories">
+    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asadbinjafor&amp;layout=compact&amp;theme=tokyonight&amp;hide_border=true" alt="Top languages"/>
+  </a>
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=asadbinjafor&theme=tokyo-night&hide_border=true&area=true" alt="Contribution graph"/>
-</p>
+  <br/>
+
+  <a href="https://github.com/asadbinjafor?tab=repositories">
+    <img src="https://streak-stats.demolab.com/?user=asadbinjafor&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub streak"/>
+  </a>
+
+</div>
 
 ---
 
