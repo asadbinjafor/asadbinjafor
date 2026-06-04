@@ -40,19 +40,68 @@ portfolio: asadbinjafor.github.io/Asad_Portfolio
 
 ## 🚀 Featured Projects
 
-| # | Project | Tech Stack | Repository |
-|:-:|---------|------------|------------|
-| 01 | **Online Mobile Shop** | PHP, MySQL, JavaScript | [Mobile_Shop](https://github.com/asadbinjafor/Mobile_Shop) |
-| 02 | **Online Medical Shop** | PHP, MySQL, HTML, CSS | [Medical_Shop](https://github.com/asadbinjafor/Online-Medical-Shop-Web-Tech-) |
-| 03 | **AgriTech Village Management** | C#, .NET, OOP | [AgriTech](https://github.com/asadbinjafor/AgriTech-Village-Management-System-OOP2) |
-| 04 | **Course Management System** | Oracle SQL, MySQL | [Course_Mgmt](https://github.com/asadbinjafor/SQL-COURSE-MANAGEMENT-SYSTEM-PROJECT) |
-| 05 | **Sporting Sphere Complex** | Java, OOP | [Sporting_Sphere](https://github.com/asadbinjafor/JAVA-PROJECT--Sporting-Sphere-complex) |
-| 06 | **3D City & Village Simulation** | C++, OpenGL, GLUT | [3D_Simulation](https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics) |
+<div align="center">
 
-<p align="center">
-  <a href="https://github.com/asadbinjafor?tab=repositories"><img src="https://img.shields.io/badge/View_All_Projects-GitHub_Repos-181717?style=for-the-badge&logo=github&logoColor=white" alt="View all projects on GitHub"/></a>
-  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-Website-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio website"/></a>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th align="center">#</th>
+      <th align="left">Project</th>
+      <th align="left">Tech Stack</th>
+      <th align="center">Repository</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">01</td>
+      <td align="left"><b>Online Mobile Shop</b></td>
+      <td align="left">PHP, MySQL, JavaScript</td>
+      <td align="center"><a href="https://github.com/asadbinjafor/Mobile_Shop">Mobile_Shop</a></td>
+    </tr>
+    <tr>
+      <td align="center">02</td>
+      <td align="left"><b>Online Medical Shop</b></td>
+      <td align="left">PHP, MySQL, HTML, CSS</td>
+      <td align="center"><a href="https://github.com/asadbinjafor/Online-Medical-Shop-Web-Tech-">Medical_Shop</a></td>
+    </tr>
+    <tr>
+      <td align="center">03</td>
+      <td align="left"><b>AgriTech Village Management</b></td>
+      <td align="left">C#, .NET, OOP</td>
+      <td align="center"><a href="https://github.com/asadbinjafor/AgriTech-Village-Management-System-OOP2">AgriTech</a></td>
+    </tr>
+    <tr>
+      <td align="center">04</td>
+      <td align="left"><b>Course Management System</b></td>
+      <td align="left">Oracle SQL, MySQL</td>
+      <td align="center"><a href="https://github.com/asadbinjafor/SQL-COURSE-MANAGEMENT-SYSTEM-PROJECT">Course_Mgmt</a></td>
+    </tr>
+    <tr>
+      <td align="center">05</td>
+      <td align="left"><b>Sporting Sphere Complex</b></td>
+      <td align="left">Java, OOP</td>
+      <td align="center"><a href="https://github.com/asadbinjafor/JAVA-PROJECT--Sporting-Sphere-complex">Sporting_Sphere</a></td>
+    </tr>
+    <tr>
+      <td align="center">06</td>
+      <td align="left"><b>3D City &amp; Village Simulation</b></td>
+      <td align="left">C++, OpenGL, GLUT</td>
+      <td align="center"><a href="https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics">3D_Simulation</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+
+<a href="https://github.com/asadbinjafor?tab=repositories">
+  <img src="https://img.shields.io/badge/View_All_Projects-GitHub-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="View all projects on GitHub"/>
+</a>
+<br/><br/>
+<a href="https://asadbinjafor.github.io/Asad_Portfolio/">
+  <img src="https://img.shields.io/badge/Portfolio-Website-8b6cef?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Portfolio website"/>
+</a>
+
+</div>
 
 ---
 
