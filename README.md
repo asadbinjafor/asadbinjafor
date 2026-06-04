@@ -1,120 +1,138 @@
 <div align="center">
 
-# Hi 👋, I'm Mohammad Asad Bin Jafor
+<img src="https://capsule-render.vercel.app/api?type=waving&color=8b6cef&height=120&section=header&text=MOHAMMAD%20ASAD%20BIN%20JAFOR&fontSize=28&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
 
-### CSE Student @ AIUB · Aspiring Software Engineer · Full-Stack Web Developer
+<h3>CSE Student @ AIUB · Aspiring Software Engineer · Full-Stack Web Developer</h3>
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Asad_Portfolio-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white)](https://asadbinjafor.github.io/Asad_Portfolio/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammadasadbinjafor/)
-[![Resume](https://img.shields.io/badge/Resume-Download-2563EB?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1UZsWxhRfGYXg-u8bhBxMTHVysRUzuBuV/view?usp=sharing)
+<p>
+  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-Asad_Portfolio-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
+  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://drive.google.com/file/d/1UZsWxhRfGYXg-u8bhBxMTHVysRUzuBuV/view?usp=sharing"><img src="https://img.shields.io/badge/RESUME-Download-2563EB?style=for-the-badge&logo=googledrive&logoColor=white" alt="Resume"/></a>
+</p>
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=22&pause=1000&color=8B6CEF&center=true&vCenter=true&width=600&lines=Building+clean+purposeful+software;Full-Stack+Web+%7C+Java+%7C+C%23+.NET;Open+to+Software+Internships" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=8B6CEF&center=true&vCenter=true&width=620&lines=Building+clean%2C+purposeful+software;Full-Stack+Web+%7C+Java+%7C+C%23+.NET;Open+to+Software+Development+Internships" alt="Typing animation"/>
+
+<img src="https://komarev.com/ghpvc/?username=asadbinjafor&label=Profile%20Views&color=8b6cef&style=flat-square" alt="Profile views"/>
 
 </div>
 
 ---
 
-## About Me
+## 👨‍💻 About Me
 
 ```yaml
 name: Mohammad Asad Bin Jafor
 location: Dhaka, Bangladesh
 education: BSc in Computer Science & Engineering @ AIUB
-status: Final-year student | CGPA 3.60/4.00
-currently_learning: Full-Stack Web, Software Engineering, AI
-interests: Web Development, Database Systems, OOP, Computer Graphics
+status: Final-year student
+focus: Full-Stack Web · Database Systems · OOP · Software Engineering
+currently_learning: PHP, JavaScript, Java, C#/.NET, MySQL, AI
 email: asadbinjafor@gmail.com
+portfolio: asadbinjafor.github.io/Asad_Portfolio
 ```
 
 - 🎓 Final-year **CSE student** at **American International University-Bangladesh (AIUB)**
-- 💻 I build **full-stack web apps**, **database systems** and **object-oriented software**
-- 🌱 Currently sharpening **PHP, JavaScript, Java, C#/.NET, MySQL** and **software engineering** skills
-- 🏆 Active in **AIUB Computer Club**, tech events and **NASA Space Apps Challenge** volunteering
-- 🎯 Seeking **Software / Web Development internship** opportunities
-- 📫 Reach me at **asadbinjafor@gmail.com**
+- 💻 Building **full-stack web applications**, **database systems** and **object-oriented software**
+- 🏆 **AIUB Computer Club** member · Cyber Gaming Fest organizer · **NASA Space Apps** volunteer
+- 🎯 Open to **Software Development** and **Web Development** internship opportunities
+- 📫 **asadbinjafor@gmail.com**
 
 ---
 
-## Featured Projects
+## 🚀 Featured Projects
 
-| Project | Stack | Link |
-|:--------|:------|:-----|
-| **Online Mobile Shop** | PHP, MySQL, JavaScript | [GitHub](https://github.com/asadbinjafor/Mobile_Shop) |
-| **Online Medical Shop** | PHP, MySQL, HTML, CSS | [GitHub](https://github.com/asadbinjafor/Online-Medical-Shop-Web-Tech-) |
-| **AgriTech Village Management** | C#, .NET, OOP | [GitHub](https://github.com/asadbinjafor/AgriTech-Village-Management-System-OOP2) |
-| **Course Management System** | Oracle SQL, MySQL | [GitHub](https://github.com/asadbinjafor/SQL-COURSE-MANAGEMENT-SYSTEM-PROJECT) |
-| **Sporting Sphere Complex** | Java, OOP | [GitHub](https://github.com/asadbinjafor/JAVA-PROJECT--Sporting-Sphere-complex) |
-| **3D City & Village Simulation** | C++, OpenGL, GLUT | [GitHub](https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics) |
+| # | Project | Tech Stack | Repository |
+|:-:|---------|------------|------------|
+| 01 | **Online Mobile Shop** | PHP, MySQL, JavaScript | [Mobile_Shop](https://github.com/asadbinjafor/Mobile_Shop) |
+| 02 | **Online Medical Shop** | PHP, MySQL, HTML, CSS | [Medical_Shop](https://github.com/asadbinjafor/Online-Medical-Shop-Web-Tech-) |
+| 03 | **AgriTech Village Management** | C#, .NET, OOP | [AgriTech](https://github.com/asadbinjafor/AgriTech-Village-Management-System-OOP2) |
+| 04 | **Course Management System** | Oracle SQL, MySQL | [Course_Mgmt](https://github.com/asadbinjafor/SQL-COURSE-MANAGEMENT-SYSTEM-PROJECT) |
+| 05 | **Sporting Sphere Complex** | Java, OOP | [Sporting_Sphere](https://github.com/asadbinjafor/JAVA-PROJECT--Sporting-Sphere-complex) |
+| 06 | **3D City & Village Simulation** | C++, OpenGL, GLUT | [3D_Simulation](https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics) |
 
-👉 **All projects:** [asadbinjafor.github.io/Asad_Portfolio](https://asadbinjafor.github.io/Asad_Portfolio/)
-
----
-
-## Tech Stack
-
-<p align="left">
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" width="40" height="40" alt="HTML5"/></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" width="40" height="40" alt="CSS3"/></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="40" height="40" alt="JavaScript"/></a>
-  <a href="https://www.php.net/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" width="40" height="40" alt="PHP"/></a>
-  <a href="https://www.mysql.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" width="40" height="40" alt="MySQL"/></a>
-  <a href="https://www.java.com" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="40" height="40" alt="Java"/></a>
-  <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" width="40" height="40" alt="C#"/></a>
-  <a href="https://dotnet.microsoft.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg" width="40" height="40" alt=".NET"/></a>
-  <a href="https://www.python.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="40" height="40" alt="Python"/></a>
-  <a href="https://www.w3schools.com/cpp/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="40" height="40" alt="C++"/></a>
-  <a href="https://git-scm.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="40" height="40" alt="Git"/></a>
-  <a href="https://code.visualstudio.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="40" height="40" alt="VS Code"/></a>
+<p align="center">
+  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/View_All_Projects-Portfolio-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="View all projects"/></a>
 </p>
 
 ---
 
-## GitHub Stats
+## 🛠 Tech Stack
+
+**Languages**
+<br/>
+<img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C"/>
+<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"/>
+<img src="https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=csharp&logoColor=white" alt="C#"/>
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+<img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+
+**Web & Database**
+<br/>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
+<img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle"/>
+<img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET"/>
+
+**Tools**
+<br/>
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+<img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code"/>
+<img src="https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white" alt="XAMPP"/>
+
+---
+
+## 📊 GitHub Analytics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=asadbinjafor&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" height="165" alt="GitHub Stats"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=asadbinjafor&layout=compact&theme=tokyonight&hide_border=true" height="165" alt="Top Languages"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=asadbinjafor&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" height="170" alt="GitHub stats"/>
+  &nbsp;
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=asadbinjafor&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" height="170" alt="Top languages"/>
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=asadbinjafor&theme=tokyonight&hide_border=true" alt="GitHub Streak"/>
+  <img src="https://streak-stats.demolab.com/?user=asadbinjafor&theme=tokyonight&hide_border=true&date_format=M%20j%5B%2C%20Y%5D" alt="GitHub streak"/>
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=asadbinjafor&label=Profile%20Views&color=8b6cef&style=for-the-badge" alt="Profile Views"/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=asadbinjafor&theme=tokyo-night&hide_border=true&area=true" alt="Contribution graph"/>
 </p>
 
 ---
 
-## Connect With Me
+## 🏅 Highlights
+
+- ✅ Full-stack web projects with **PHP, MySQL, JavaScript**
+- ✅ Enterprise & OOP projects in **Java** and **C#/.NET**
+- ✅ Database design with **Oracle SQL** and **MySQL**
+- ✅ Computer graphics project with **C++, OpenGL, GLUT**
+- ✅ Certifications in **Software Testing, Front-End Dev, DevOps & AI Literacy**
+- ✅ Tech event leadership at **AIUB Computer Club**
+
+---
+
+## 🤝 Connect With Me
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://github.com/asadbinjafor" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-  </a>
-  <a href="https://asadbinjafor.github.io/Asad_Portfolio/" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-8B6CEF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/>
-  </a>
-  <a href="mailto:asadbinjafor@gmail.com" target="_blank">
-    <img src="https://img.shields.io/badge/Email-asadbinjafor@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-  </a>
-  <a href="https://www.facebook.com/mohammadasadbinjafor" target="_blank">
-    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"/>
-  </a>
-  <a href="https://www.instagram.com/asad________01" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
-  </a>
+  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://github.com/asadbinjafor"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-8B6CEF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
+  <a href="mailto:asadbinjafor@gmail.com"><img src="https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+  <a href="https://www.facebook.com/mohammadasadbinjafor"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"/></a>
+  <a href="https://www.instagram.com/asad________01"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
 </p>
 
 ---
 
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=8b6cef&height=80&section=footer"/>
+
 *"I turn real-world problems into clean, purposeful software."*
 
-⭐️ From [asadbinjafor](https://github.com/asadbinjafor)
+⭐️ From **[asadbinjafor](https://github.com/asadbinjafor)**
 
 </div>
