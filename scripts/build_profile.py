@@ -105,8 +105,6 @@ def info(x, y, mobile=False):
         ("Grid.GitHub", "@asadbinjafor", PURPLE),
     ]
     b = text(x, y, "SYSTEM.INFO", 16, CYAN, 'font-weight="700" letter-spacing="2"')
-    b += rect(x, y+13, 202, 23, "#6237c9", radius=3)
-    b += text(x+10, y+29, "developer@asad:~$", 13, "#ffffff")
     for i,(label,value,color) in enumerate(rows):
         if label:
             yy = y+63+i*gap
