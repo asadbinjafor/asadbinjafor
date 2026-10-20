@@ -35,6 +35,13 @@ class VisualMapTests(unittest.TestCase):
         self.assertEqual(len(motion.get("values").split(";")),len(motion.get("keyTimes").split(";")))
         self.assertIn("prefers-reduced-motion:reduce",visual_map.MOTION_CSS)
 
+    def test_stroked_paths_preserve_open_ends_and_close_only_on_z(self):
+        open_path=visual_map.svg_contours("M10 20L30 40L50 20")[0]
+        closed_path=visual_map.svg_contours("M10 20L30 40L50 20Z")[0]
+        self.assertNotEqual(open_path[0],open_path[-1])
+        self.assertEqual(closed_path[0],closed_path[-1])
+        self.assertEqual(open_path,closed_path[:-1])
+
 
 if __name__=="__main__":
     unittest.main()

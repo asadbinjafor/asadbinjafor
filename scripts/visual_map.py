@@ -14,6 +14,14 @@ from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
 WIDTH, HEIGHT = 300, 369
+SYMBOLS = {"react":"React", "nestjs":"NestJS", "postgresql":"PostgreSQL"}
+CAPTIONS = {"react":"FRONTEND / REACT", "nestjs":"BACKEND / NESTJS",
+            "postgresql":"DATABASE / POSTGRESQL"}
+# Twelve seconds on the portrait across the loop boundary; three per stack logo.
+TIMELINE = [(0,"portrait"),(10,"portrait"),(12,"react"),(15,"react"),
+            (17,"nestjs"),(20,"nestjs"),(22,"postgresql"),(25,"postgresql"),
+            (28,"portrait"),(30,"portrait")]
+DURATION = 30
 CONTOUR = [
     (332,350),(328,278),(334,211),(351,157),(383,115),(423,79),
     (481,60),(544,49),(600,51),(653,61),(704,84),(731,119),
@@ -90,7 +98,10 @@ def svg_contours(path):
         if tokens[i].isalpha():
             command=tokens[i]; i+=1
         if command=="Z":
-            if points:contours.append(points)
+            if points:
+                pos=points[0]
+                points.append(pos)
+                contours.append(points)
             points=[]; command=None
             continue
         count={"M":2,"L":2,"H":1,"V":1,"C":6}.get(command)
@@ -135,22 +146,35 @@ def symbol_pixels(name):
     image=Image.new("L",(WIDTH,HEIGHT))
     draw=ImageDraw.Draw(image)
     root=ET.parse(ROOT / "assets/icons" / f"{name}-Dark.svg").getroot()
+    scale={"React":1.15,"NestJS":1.0,"PostgreSQL":1.35}[name]
+    dx,dy=WIDTH/2-128*scale,173-128*scale
     for path in root.findall("{http://www.w3.org/2000/svg}path"):
         contours=svg_contours(path.attrib["d"])
         contours.sort(key=lambda p:abs(signed_area(p)),reverse=True)
-        drawn=[]
-        for points in contours:
-            containers=[p for p in drawn if inside(points[0],p)]
-            winding=sum(1 if signed_area(p)>0 else -1 for p in containers+[points])
-            # The icon's original 256-square viewbox sits inside the tall frame.
-            points_on_map=([(-10+x*1.25,15+y*1.25) for x,y in points]
-                           if name=="Java" else [(22+x,56+y) for x,y in points])
-            draw.polygon(points_on_map,fill=255 if winding else 0)
-            drawn.append(points)
+        fill=path.get("fill",root.get("fill","black"))
+        if fill!="none":
+            drawn=[]
+            # The elephant's linework needs contrast against its filled body.
+            tone=70 if name=="PostgreSQL" and fill!="#fff" else 255
+            for points in contours:
+                containers=[p for p in drawn if inside(points[0],p)]
+                winding=sum(1 if signed_area(p)>0 else -1 for p in containers+[points])
+                points_on_map=[(dx+x*scale,dy+y*scale) for x,y in points]
+                draw.polygon(points_on_map,fill=tone if winding else 0)
+                drawn.append(points)
+        if path.get("stroke","none")!="none":
+            stroke_width=max(1,round(float(path.get("stroke-width","1"))*scale))
+            for points in contours:
+                mapped=[(dx+x*scale,dy+y*scale) for x,y in points]
+                draw.line(mapped,fill=255,width=stroke_width,joint="curve")
+                if path.get("stroke-linecap")=="round":
+                    r=stroke_width/2
+                    for cx,cy in (mapped[0],mapped[-1]):
+                        draw.ellipse((cx-r,cy-r,cx+r,cy+r),fill=255)
     # The same monochrome texture as the portrait; deterministic, never flickers.
     rng=random.Random(21)
     return {(x,y) for y in range(HEIGHT) for x in range(WIDTH)
-            if image.getpixel((x,y)) and rng.random()>.08}
+            if rng.random()<image.getpixel((x,y))/255*.92}
 
 
 def runs(pixels):
@@ -180,25 +204,16 @@ def path_data(marks):
 
 @lru_cache(maxsize=1)
 def scenes():
-    portrait=runs(portrait_pixels())
-    java=runs(symbol_pixels("Java"))
-    python=runs(symbol_pixels("Python"))
-    count=max(map(len,(portrait,java,python)))
-    rng=random.Random(42)
-    scattered=[(rng.randrange(WIDTH-4),rng.randrange(HEIGHT),rng.randint(1,3))
-               for _ in range(count)]
-    return {
-        "portrait":path_data(equalize(portrait,count)),
-        "java":path_data(equalize(java,count)),
-        "python":path_data(equalize(python,count)),
-        "scatter":path_data(scattered),
-    }
+    marks={"portrait":runs(portrait_pixels())}
+    marks.update({key:runs(symbol_pixels(icon)) for key,icon in SYMBOLS.items()})
+    count=max(map(len,marks.values()))
+    return {key:path_data(equalize(value,count)) for key,value in marks.items()}
 
 
 MOTION_CSS = """
 .map-still{display:none}
 @media(prefers-reduced-motion:reduce){
-  .map-motion{display:none}.map-still{display:inline}
+  .map-motion,.map-caption{display:none}.map-still{display:inline}
 }
 """
 
@@ -220,9 +235,18 @@ def render(x,y,width,height,static_scene=None):
         b+=f'<path fill="{fill}" d="{shapes[static_scene]}"/>'
     else:
         b+=f'<path class="map-still" fill="{fill}" d="{shapes["portrait"]}"/>'
-        sequence=["scatter","portrait","portrait","python","python","java","java","scatter","scatter"]
         b+=f'<path class="map-motion" fill="{fill}" d="{shapes["portrait"]}">'
-        b+=f'<animate attributeName="d" dur="24s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.125;0.375;0.4583;0.625;0.7083;0.875;0.9583;1" values="{";".join(shapes[k] for k in sequence)}"/></path>'
+        times=";".join(f"{t/DURATION:.6g}" for t,_ in TIMELINE)
+        values=";".join(shapes[key] for _,key in TIMELINE)
+        b+=f'<animate attributeName="d" dur="{DURATION}s" repeatCount="indefinite" calcMode="linear" keyTimes="{times}" values="{values}"/></path>'
+    for key,label in CAPTIONS.items():
+        if static_scene and static_scene!=key:continue
+        opacity="1" if static_scene else "0"
+        b+=f'<text class="map-caption" x="150" y="345" text-anchor="middle" fill="#7edeea" font-family="Consolas,monospace" font-size="10" letter-spacing="1" opacity="{opacity}">{label}'
+        if not static_scene:
+            start,end=[t for t,scene in TIMELINE if scene==key]
+            b+=f'<animate attributeName="opacity" dur="{DURATION}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;{start/DURATION:.6g};{end/DURATION:.6g};1" values="0;1;0;0"/>'
+        b+="</text>"
     b+="</g></g>"
     for px,py,dx,dy in [(x,y,1,1),(x+width,y,-1,1),(x,y+height,1,-1),(x+width,y+height,-1,-1)]:
         b+=f'<path d="M{px} {py+dy*16}V{py}H{px+dx*16}" fill="none" stroke="#54e4ee" stroke-width="1.5"/>'

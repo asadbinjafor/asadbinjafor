@@ -147,7 +147,7 @@ def hero(mobile=False, static_scene=None):
         b+=text(1112,99,"LIVE",10,CYAN)
         b+=text(470,554,"$ open to internships / junior roles_",14,PURPLE)
         b+=text(470,580,"More about me & projects below in README",12,MUTED)
-    result=svg(w,h,"Asad's terminal — pixel portrait morphing into Java and Python, skills and contact",b,ANIMATION)
+    result=svg(w,h,"Asad's full-stack terminal — pixel portrait, React, NestJS and PostgreSQL",b,ANIMATION)
     if static_scene:
         return result
     save("hero-mobile.svg" if mobile else "hero.svg",result)
