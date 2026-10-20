@@ -6,8 +6,8 @@
 </p>
 
 <picture>
-  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg" />
-  <img src="./assets/hero.svg" width="100%" alt="Asad's animated terminal: portrait, ASCII art, Java and TypeScript. Final-semester CSE student at AIUB, CGPA 3.65/4.00, based in Dhaka, Bangladesh. Full Stack Web Developer working with React, Next.js, NestJS, PHP, PostgreSQL, MySQL and Oracle." />
+  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg?v=5162ee29681f" />
+  <img src="./assets/hero.svg?v=dc6f3894c2e2" width="100%" alt="Asad's animated terminal: a violet and cyan pixel portrait morphing into Python and Java. Final-semester CSE student at AIUB, CGPA 3.65/4.00, based in Dhaka, Bangladesh. Full Stack Web Developer working with React, Next.js, NestJS, PHP, PostgreSQL, MySQL and Oracle." />
 </picture>
 
 <p align="center">

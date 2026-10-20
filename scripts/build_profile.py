@@ -1,16 +1,16 @@
 """Build self-contained, GitHub-compatible SVG panels from Asad's own profile data."""
 from pathlib import Path
 from html import escape
-import base64
 import json
+import hashlib
 import math
 import re
 import sys
 from collections import Counter
 from datetime import date, datetime, timedelta
-from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 ASSETS = ROOT / "assets"
 DATA = json.loads((ROOT / "data/github-snapshot.json").read_text(encoding="utf-8"))
 CYAN = "#64f3f0"
@@ -75,45 +75,12 @@ def heading():
     save("heading-mobile.svg", svg(500, 188, "Mohammad Asad Bin Jafor — Full Stack Web Developer", mobile))
 
 
-def portrait_scene(x, y, s):
-    photo = base64.b64encode((ASSETS / "asad.png").read_bytes()).decode()
-    # Sampling the supplied portrait produces SVG text, not a generated replacement face.
-    im = Image.open(ASSETS / "asad.png").convert("L").resize((64, 48))
-    ramp = " .,:;irsXA253hMHGS#9B&@"
-    ascii_lines = []
-    for row in range(48):
-        line = "".join(ramp[min(len(ramp)-1, int((255-im.getpixel((col,row))) / 256 * len(ramp)))] for col in range(64))
-        ascii_lines.append(text(x+7, y+9+row*(s-16)/48, line, (s-14)/64/.6, CYAN,
-                                'xml:space="preserve" textLength="%s" lengthAdjust="spacingAndGlyphs"' % (s-14)))
-    b = f'<defs><clipPath id="portrait-clip">{rect(x,y,s,s,"white",radius=7)}</clipPath></defs>'
-    b += rect(x, y, s, s, "url(#blue)", "#2b527a", 7)
-    b += f'<g clip-path="url(#portrait-clip)">'
-    b += f'<image class="photo" x="{x}" y="{y}" width="{s}" height="{s}" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/png;base64,{photo}"/>'
-    b += '<g class="ascii">' + "".join(ascii_lines) + "</g>"
-    java = (ASSETS / "icons/Java-Dark.svg").read_text(encoding="utf-8")
-    java = re.sub(r'<svg\b', f'<svg x="{x+s*.22}" y="{y+s*.15}"', java, count=1)
-    java = re.sub(r'width="[^"]+"', f'width="{s*.56}"', java, count=1)
-    java = re.sub(r'height="[^"]+"', f'height="{s*.56}"', java, count=1)
-    b += '<g class="java">' + java + text(x+s/2, y+s*.86, "JAVA / OOP", 19, CYAN, 'text-anchor="middle"') + "</g>"
-    b += '<g class="code">' + text(x+s/2, y+s*.53, "{ TS }", 60, CYAN, 'text-anchor="middle" font-weight="700"')
-    b += text(x+s/2, y+s*.72, "NEXT.JS + NESTJS", 18, WHITE, 'text-anchor="middle"') + "</g>"
-    b += f'<rect class="scan" x="{x}" y="{y}" width="{s}" height="2" fill="{CYAN}" opacity=".65"/>'
-    b += "</g>"
-    # The four corner brackets match the visual-map framing in the reference.
-    for px,py,dx,dy in [(x-5,y-5,1,1),(x+s+5,y-5,-1,1),(x-5,y+s+5,1,-1),(x+s+5,y+s+5,-1,-1)]:
-        b += f'<path d="M{px} {py+dy*20}V{py}H{px+dx*20}" fill="none" stroke="{CYAN}" stroke-width="2"/>'
-    return b
+def portrait_scene(x, y, width, height, static_scene=None):
+    from visual_map import render
+    return render(x, y, width, height, static_scene)
 
 
-ANIMATION = '''.ascii,.java,.code{opacity:0}.photo{opacity:1;animation:photo 20s infinite}
-.ascii{animation:ascii 20s infinite}.java{animation:java 20s infinite}.code{animation:code 20s infinite}
-.scan{animation:scan 8s linear infinite}
-@keyframes photo{0%,44%,100%{opacity:1}49%,94%{opacity:0}}
-@keyframes ascii{0%,44%,68%,100%{opacity:0}49%,63%{opacity:1}}
-@keyframes java{0%,64%,83%,100%{opacity:0}69%,79%{opacity:1}}
-@keyframes code{0%,79%,98%,100%{opacity:0}84%,94%{opacity:1}}
-@keyframes scan{0%{transform:translateY(0);opacity:0}5%,90%{opacity:.45}100%{transform:translateY(330px);opacity:0}}
-@media(prefers-reduced-motion:reduce){.photo{animation:none;opacity:1}.ascii,.java,.code,.scan{animation:none;opacity:0}}'''
+from visual_map import MOTION_CSS as ANIMATION
 
 
 def info(x, y, mobile=False):
@@ -144,39 +111,57 @@ def info(x, y, mobile=False):
         if label:
             yy = y+63+i*gap
             b += text(x, yy, label, size, MUTED)
-            b += text(x+offset-18, yy, ":", size, "#56718e")
-            b += text(x+offset, yy, value, size, color)
+            if mobile:
+                b += text(x+offset-18, yy, ":", size, "#56718e")
+                b += text(x+offset, yy, value, size, color)
+            else:
+                leader_start=x+len(label)*size*.6+14
+                leader_end=x+650-len(value)*size*.6-12
+                b+=f'<path d="M{leader_start} {yy-4}H{leader_end}" stroke="#31445e" stroke-dasharray="1 5"/>'
+                b+=text(x+650,yy,value,size,color,'text-anchor="end" font-weight="600"')
         else:
             yy = y+52+i*gap
             b += f'<path d="M{x} {yy}H{x+(402 if mobile else 520)}" stroke="#234065" stroke-dasharray="3 5"/>'
     return b
 
 
-def hero(mobile=False):
-    w,h=(500,1070) if mobile else (1000,610)
+def hero(mobile=False, static_scene=None):
+    w,h=(500,1170) if mobile else (1180,610)
     b=panel(w,h)
+    b+=rect(11,11,w-22,h-22,"#0a101f",radius=13)
     for x,c in [(30,"#ff6e87"),(47,"#ffd17a"),(64,"#6ce3b1")]:
         b+=f'<circle cx="{x}" cy="32" r="4" fill="{c}"/>'
-    b+=text(92,37,"asad@github:~ / profile",13,MUTED)
+    b+=text(92,37,"asad@github:~ / profile.sh --live",13,MUTED)
     if not mobile:
-        b+=text(969,37,"OPEN TO OPPORTUNITIES",12,CYAN,'text-anchor="end" letter-spacing="1"')
+        b+=text(w-31,37,"asadbinjafor@gmail.com",12,MUTED,'text-anchor="end"')
     b+=f'<path d="M11 52H{w-11}" stroke="#28415e"/>'
-    px,py,ps=(82,108,336) if mobile else (38,113,338)
-    b+=text(px,py-19,"VISUAL.MAP",13,CYAN,'letter-spacing="2"')
-    b+=portrait_scene(px,py,ps)
-    b+=text(px,py+ps+30,"01 / PORTRAIT · CODE · SYSTEMS",12,MUTED)
+    px,py=(50,100) if mobile else (36,84)
+    b+=text(px,py-12,"VISUAL.MAP",11,CYAN,'letter-spacing="2.5"')
+    b+=portrait_scene(px,py,400,492,static_scene)
     if mobile:
-        b+=info(32,517,True)
-        b+=text(32,1032,"$ ready to build something useful_",14,CYAN)
+        b+=info(32,635,True)
+        b+=text(32,1140,"$ ready to build something useful_",14,CYAN)
     else:
-        b+=info(417,91)
-        b+=rect(38,506,338,55,"#0c2038","#254467",6)
-        b+=f'<circle cx="56" cy="531" r="4" fill="#6ce3b1"/>'
-        b+=text(70,529,"AVAILABLE FOR",11,MUTED,'letter-spacing="1.5"')
-        b+=text(70,548,"Internships / Junior roles",14,CYAN)
-        b+=text(417,555,"$ build / learn / improve_",14,PURPLE)
-        b+=text(969,584,"READ THE WORK. MEET THE DEVELOPER.",11,MUTED,'text-anchor="end" letter-spacing="1"')
-    save("hero-mobile.svg" if mobile else "hero.svg",svg(w,h,"Asad's terminal — portrait, skills, education and contact",b,ANIMATION))
+        b+=info(470,100)
+        b+=f'<circle cx="1102" cy="95" r="3" fill="#6ce3b1"/>'
+        b+=text(1112,99,"LIVE",10,CYAN)
+        b+=text(470,554,"$ open to internships / junior roles_",14,PURPLE)
+        b+=text(470,580,"More about me & projects below in README",12,MUTED)
+    result=svg(w,h,"Asad's terminal — pixel portrait morphing into Java and Python, skills and contact",b,ANIMATION)
+    if static_scene:
+        return result
+    save("hero-mobile.svg" if mobile else "hero.svg",result)
+
+
+def version_hero_links():
+    """Invalidate cached README hero images only when their content changes."""
+    readme=ROOT/"README.md"
+    content=readme.read_text(encoding="utf-8")
+    for asset in ("hero.svg","hero-mobile.svg"):
+        digest=hashlib.sha256((ASSETS/asset).read_bytes()).hexdigest()[:12]
+        content=re.sub(r'(\./assets/'+re.escape(asset)+r')(?:\?v=[a-zA-Z0-9]+)?',
+                       lambda match:match[1]+"?v="+digest,content)
+    readme.write_text(content,encoding="utf-8")
 
 
 def stats():
@@ -314,12 +299,18 @@ def buttons():
 
 
 if __name__=="__main__":
-    stats()
-    activity()
-    if "--stats-only" not in sys.argv:
+    if "--hero-only" in sys.argv:
+        hero()
+        hero(mobile=True)
+    else:
+        stats()
+        activity()
+    if "--stats-only" not in sys.argv and "--hero-only" not in sys.argv:
         heading()
         hero()
         hero(mobile=True)
         research()
         buttons()
-    print("Built activity panels." if "--stats-only" in sys.argv else "Built all profile SVG panels.")
+    if "--stats-only" not in sys.argv:
+        version_hero_links()
+    print("Built hero panels." if "--hero-only" in sys.argv else "Built activity panels." if "--stats-only" in sys.argv else "Built all profile SVG panels.")
