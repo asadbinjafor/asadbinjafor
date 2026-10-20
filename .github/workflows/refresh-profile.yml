@@ -1,0 +1,68 @@
+name: Refresh profile stats
+
+on:
+  schedule:
+    # UTC. Bangladesh: 00:17, 06:17, 12:17 and 18:17.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/refresh-profile.yml"
+      - "scripts/**"
+      - "requirements.txt"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: refresh-profile-stats
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.repository == 'asadbinjafor/asadbinjafor'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the latest profile
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install renderer dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Check refresh behavior
+        run: python -m unittest discover -s tests -v
+
+      - name: Refresh GitHub statistics and contribution grid
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/refresh_stats.py
+
+      - name: Publish refreshed assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md data/github-snapshot.json assets/stats.svg assets/stats-mobile.svg assets/activity.svg
+          if git diff --cached --quiet; then
+            echo "Profile data is unchanged."
+            exit 0
+          fi
+          git commit -m "chore: refresh profile statistics [skip ci]"
+          # Rebase preserves any edits made while data was being fetched.
+          # Conflicts stop the job; history is never force-pushed.
+          git pull --rebase origin main
+          git push origin HEAD:main

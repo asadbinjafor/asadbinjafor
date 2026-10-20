@@ -1,18 +1,19 @@
 {
   "username": "asadbinjafor",
   "updated": "2026-10-20",
+  "updated_at": "2026-10-20T21:09:00+06:00",
   "public_repos": 28,
   "followers": 2,
   "stars": 8,
   "languages": {
     "TypeScript": 4,
     "C#": 1,
+    "Python": 2,
     "HTML": 1,
     "C++": 2,
     "PHP": 10,
     "Java": 2,
-    "Jupyter Notebook": 1,
-    "Python": 1
+    "Jupyter Notebook": 1
   },
   "contributions": [
     {

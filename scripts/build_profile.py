@@ -5,8 +5,9 @@ import base64
 import json
 import math
 import re
+import sys
 from collections import Counter
-from datetime import date
+from datetime import date, datetime, timedelta
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -184,9 +185,13 @@ def stats():
     for d in days:
         run=run+1 if d["count"] else 0
         longest=max(longest,run)
-    b=panel(1000,295)
+    langs=sorted(DATA["languages"].items(),key=lambda x:(-x[1], x[0]))
+    desktop_height=max(295,239+math.ceil(len(langs)/4)*28)
+    mobile_height=max(525,389+math.ceil(len(langs)/2)*34)
+    refreshed=datetime.fromisoformat(DATA["updated_at"]).strftime("%Y-%m-%d %H:%M BST") if DATA.get("updated_at") else DATA["updated"]
+    b=panel(1000,desktop_height)
     b+=text(35,45,"GITHUB.TELEMETRY",15,CYAN,'letter-spacing="2"')
-    b+=text(965,45,DATA["updated"],12,MUTED,'text-anchor="end"')
+    b+=text(965,45,refreshed,12,MUTED,'text-anchor="end"')
     metrics=[(sum(d["count"] for d in days),"CONTRIBUTIONS / 12 MONTHS"),(DATA["public_repos"],"PUBLIC REPOSITORIES"),(f"{longest} days","LONGEST STREAK / 12 MONTHS")]
     for i,(v,label) in enumerate(metrics):
         x=175+i*325
@@ -194,7 +199,6 @@ def stats():
         b+=text(x,133,label,11,CYAN,'text-anchor="middle" letter-spacing=".8"')
         if i<2:b+=f'<path d="M{x+162} 69V140" stroke="#315778"/>'
     b+=text(35,177,"REPOSITORIES BY PRIMARY LANGUAGE",12,MUTED,'letter-spacing="1"')
-    langs=sorted(DATA["languages"].items(),key=lambda x:-x[1])
     colors=["#8e87dc","#338de6","#ef647d","#c8a5ff","#e2bb58","#5bcfbb","#c769a5","#fcb15c"]
     total=sum(n for _,n in langs)
     x=35
@@ -206,10 +210,10 @@ def stats():
         x=35+(i%4)*240; y=232+(i//4)*28
         b+=f'<circle cx="{x+4}" cy="{y-5}" r="4" fill="{colors[i%len(colors)]}"/>'
         b+=text(x+17,y,f"{lang} · {n}",13,WHITE)
-    save("stats.svg",svg(1000,295,"GitHub activity snapshot and public repository languages",b))
-    mobile=panel(500,525)
+    save("stats.svg",svg(1000,desktop_height,"Automatically refreshed GitHub activity and public repository languages",b))
+    mobile=panel(500,mobile_height)
     mobile+=text(30,43,"GITHUB.TELEMETRY",15,CYAN,'letter-spacing="1"')
-    mobile+=text(470,43,DATA["updated"],12,MUTED,'text-anchor="end"')
+    mobile+=text(470,43,refreshed,10,MUTED,'text-anchor="end"')
     for i,(value,label) in enumerate(metrics):
         yy=104+i*90
         mobile+=text(35,yy,value,31,WHITE,'font-weight="700"')
@@ -220,27 +224,33 @@ def stats():
         xx=30+(i%2)*230; yy=380+(i//2)*34
         mobile+=f'<circle cx="{xx+4}" cy="{yy-5}" r="4" fill="{colors[i%len(colors)]}"/>'
         mobile+=text(xx+17,yy,f"{lang} · {n}",14,WHITE)
-    save("stats-mobile.svg",svg(500,525,"GitHub activity snapshot and public repository languages",mobile))
+    save("stats-mobile.svg",svg(500,mobile_height,"Automatically refreshed GitHub activity and public repository languages",mobile))
 
 
 def activity():
     days=DATA["contributions"]
     b=panel(1000,250)
     b+=text(35,44,"CONTRIBUTION.GRID",15,CYAN,'letter-spacing="2"')
-    b+=text(965,44,"ACTIVITY SNAPSHOT / "+DATA["updated"],11,MUTED,'text-anchor="end"')
+    b+=text(965,44,"AUTO-UPDATED / "+DATA["updated"],11,MUTED,'text-anchor="end"')
     start=date.fromisoformat(days[0]["date"])
+    start-=timedelta(days=(start.weekday()+1)%7)
+    end=date.fromisoformat(days[-1]["date"])
+    columns=(end-start).days//7+1
+    step=930/columns
     colors=["#122239","#15505f","#168786","#40bdb0","#83f9cd"]
     for d in days:
         day=date.fromisoformat(d["date"]); ix=(day-start).days
-        x=35+(ix//7)*17.6; y=82+(ix%7)*17
+        x=35+(ix//7)*step; y=82+(ix%7)*17
         b+=f'<g><title>{d["date"]}: {d["count"]} contributions</title>'+rect(round(x,1),y,13,13,colors[d["level"]],radius=3)+"</g>"
-    for col,label in [(0,"OCT"),(5,"NOV"),(9,"DEC"),(13,"JAN"),(18,"FEB"),(22,"MAR"),(26,"APR"),(31,"MAY"),(35,"JUN"),(39,"JUL"),(44,"AUG"),(48,"SEP")]:
-        b+=text(35+col*17.6,71,label,9,MUTED)
+    for col,label in month_labels(start,end):
+        b+=text(round(35+col*step,1),71,label,9,MUTED)
     # A small decorative snake travels across the real, unmodified activity grid.
     coords=[]
-    for col in range(53):
+    for col in range(columns):
         rows=range(7) if col%2==0 else reversed(range(7))
-        for row in rows:coords.append(f"{41.5+col*17.6:.1f},{88.5+row*17}")
+        for row in rows:
+            if start+timedelta(days=col*7+row)<=end:
+                coords.append(f"{41.5+col*step:.1f},{88.5+row*17}")
     path="M"+" L".join(coords)
     for i in reversed(range(6)):
         b+=f'<rect class="snake" x="-6.5" y="-6.5" width="13" height="13" rx="3" fill="{CYAN}" opacity="{1-i*.12}"><animateMotion dur="48s" begin="-{i*.13}s" repeatCount="indefinite" path="{path}"/></rect>'
@@ -248,6 +258,21 @@ def activity():
     b+=text(965,226,"each square = one day",11,MUTED,'text-anchor="end"')
     save("activity.svg",svg(1000,250,"Asad's real contribution history with a decorative animated snake",b,
          "@media(prefers-reduced-motion:reduce){.snake{display:none}}"))
+
+
+def month_labels(start,end):
+    """Place month labels from the actual rolling date window, in any year."""
+    labels=[(0,start.strftime("%b").upper())]
+    cursor=start+timedelta(days=1)
+    while cursor<=end:
+        column=(cursor-start).days//7
+        if cursor.day==1:
+            # Omit a short initial month fragment so the new month's label fits.
+            if column-labels[-1][0]<3:
+                labels.pop()
+            labels.append((column,cursor.strftime("%b").upper()))
+        cursor+=timedelta(days=1)
+    return labels
 
 
 def research():
@@ -289,11 +314,12 @@ def buttons():
 
 
 if __name__=="__main__":
-    heading()
-    hero()
-    hero(mobile=True)
     stats()
     activity()
-    research()
-    buttons()
-    print("Built all profile SVG panels.")
+    if "--stats-only" not in sys.argv:
+        heading()
+        hero()
+        hero(mobile=True)
+        research()
+        buttons()
+    print("Built activity panels." if "--stats-only" in sys.argv else "Built all profile SVG panels.")

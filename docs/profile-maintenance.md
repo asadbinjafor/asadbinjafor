@@ -12,11 +12,17 @@ This profile uses GitHub Flavored Markdown and repository-hosted SVG assets. It 
 
 ## Refresh GitHub activity
 
-Run `python scripts/refresh_stats.py` to fetch public GitHub profile, repository and contribution data, then rebuild the SVGs. Install `Pillow` and `tzdata` if needed on Windows.
+GitHub Actions runs `.github/workflows/refresh-profile.yml` every six hours, at 00:17, 06:17, 12:17 and 18:17 Bangladesh time (UTC+6). GitHub's scheduling may run later during busy periods. Updates to the renderer or workflow also trigger a refresh. Use **Actions → Refresh profile stats → Run workflow** for an immediate refresh.
 
-The contribution graph and stats are dated snapshots, not live counters. Language distribution counts non-fork public repositories by GitHub's primary language, rather than claiming percentages of code or personal expertise. The snake is decorative; the underlying cells retain the actual contribution levels and per-day counts. There is no scheduled workflow.
+The job fetches public repository counts, languages and the rolling contribution history, then publishes the data, desktop/mobile stats, grid and README labels together. It uses GitHub's built-in, repository-scoped token; no personal access token is needed. Month labels advance with the rolling graph. Content-based image URLs refresh the browser's cache when an SVG changes.
 
-The refresh script also updates the visible date in `README.md`. Review the changes and commit the README, data and generated assets together.
+The contribution graph and stats are periodically refreshed snapshots, not per-commit live counters. Language distribution counts non-fork public repositories by their primary language, rather than claiming percentages of code or personal expertise. The snake is decorative; the underlying cells retain the actual contribution levels and per-day counts.
+
+For a local refresh, run `python -m pip install -r requirements.txt` and `python scripts/refresh_stats.py`. Review and commit the README, data and generated assets together. Run `python -m unittest discover -s tests -v` to check date rollover, source parsing and README updates.
+
+Malformed or incomplete source data fails the job before publishing, preserving the last valid profile. Concurrent refreshes are serialized. The publication step rebases onto the current `main` and never force-pushes. Only generated stats files and README metadata are staged by the job.
+
+If GitHub disables a schedule after a long period without repository activity, re-enable it on the Actions page. The README always shows the last successful refresh time.
 
 ## Content sources
 
