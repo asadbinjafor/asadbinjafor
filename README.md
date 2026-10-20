@@ -1,181 +1,145 @@
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=8b6cef&height=120&section=header&text=MOHAMMAD%20ASAD%20BIN%20JAFOR&fontSize=28&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
-
-<h3>CSE Student @ AIUB · Aspiring Software Engineer · Full-Stack Web Developer</h3>
-
-<p>
-  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-Asad_Portfolio-8b6cef?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
-  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<p align="center">
+  <picture>
+    <source media="(max-width: 600px)" srcset="./assets/heading-mobile.svg" />
+    <img src="./assets/heading.svg" width="100%" alt="Mohammad Asad Bin Jafor — Full Stack Web Developer, CSE student at AIUB" />
+  </picture>
 </p>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=8B6CEF&center=true&vCenter=true&width=620&lines=Building+clean%2C+purposeful+software;Full-Stack+Web+%7C+Java+%7C+C%23+.NET;Open+to+Software+Development+Internships" alt="Typing animation"/>
-
-<img src="https://komarev.com/ghpvc/?username=asadbinjafor&label=Profile%20Views&color=8b6cef&style=flat-square" alt="Profile views"/>
-
-</div>
-
----
-
-## 👨‍💻 About Me
-
-```yaml
-name: Mohammad Asad Bin Jafor
-location: Dhaka, Bangladesh
-education: BSc in Computer Science & Engineering @ AIUB
-status: Final-year student
-focus: Full-Stack Web · Database Systems · OOP · Software Engineering
-currently_learning: PHP, JavaScript, Java, C#/.NET, MySQL, AI
-email: asadbinjafor@gmail.com
-portfolio: asadbinjafor.github.io/Asad_Portfolio
-```
-
-- 🎓 Final-year **CSE student** at **American International University-Bangladesh (AIUB)**
-- 💻 Building **full-stack web applications**, **database systems** and **object-oriented software**
-- 🏆 **AIUB Computer Club** member · Cyber Gaming Fest organizer · **NASA Space Apps** volunteer
-- 🎯 Open to **Software Development** and **Web Development** internship opportunities
-- 📫 **asadbinjafor@gmail.com**
-
----
-
-## 🚀 Featured Projects
-
-<div align="center">
-
-<table>
-  <thead>
-    <tr>
-      <th align="center">#</th>
-      <th align="left">Project</th>
-      <th align="left">Tech Stack</th>
-      <th align="center">Repository</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center">01</td>
-      <td align="left"><b>Online Mobile Shop</b></td>
-      <td align="left">PHP, MySQL, JavaScript</td>
-      <td align="center"><a href="https://github.com/asadbinjafor/Mobile_Shop">Mobile_Shop</a></td>
-    </tr>
-    <tr>
-      <td align="center">02</td>
-      <td align="left"><b>Online Medical Shop</b></td>
-      <td align="left">PHP, MySQL, HTML, CSS</td>
-      <td align="center"><a href="https://github.com/asadbinjafor/Online-Medical-Shop-Web-Tech-">Medical_Shop</a></td>
-    </tr>
-    <tr>
-      <td align="center">03</td>
-      <td align="left"><b>AgriTech Village Management</b></td>
-      <td align="left">C#, .NET, OOP</td>
-      <td align="center"><a href="https://github.com/asadbinjafor/AgriTech-Village-Management-System-OOP2">AgriTech</a></td>
-    </tr>
-    <tr>
-      <td align="center">04</td>
-      <td align="left"><b>Course Management System</b></td>
-      <td align="left">Oracle SQL, MySQL</td>
-      <td align="center"><a href="https://github.com/asadbinjafor/SQL-COURSE-MANAGEMENT-SYSTEM-PROJECT">Course_Mgmt</a></td>
-    </tr>
-    <tr>
-      <td align="center">05</td>
-      <td align="left"><b>Sporting Sphere Complex</b></td>
-      <td align="left">Java, OOP</td>
-      <td align="center"><a href="https://github.com/asadbinjafor/JAVA-PROJECT--Sporting-Sphere-complex">Sporting_Sphere</a></td>
-    </tr>
-    <tr>
-      <td align="center">06</td>
-      <td align="left"><b>3D City &amp; Village Simulation</b></td>
-      <td align="left">C++, OpenGL, GLUT</td>
-      <td align="center"><a href="https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics">3D_Simulation</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<br/>
-
-<a href="https://github.com/asadbinjafor?tab=repositories">
-  <img src="https://img.shields.io/badge/View_All_Projects-GitHub-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="View all projects on GitHub"/>
-</a>
-<br/><br/>
-<a href="https://asadbinjafor.github.io/Asad_Portfolio/">
-  <img src="https://img.shields.io/badge/Portfolio-Website-8b6cef?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Portfolio website"/>
-</a>
-
-</div>
-
----
-
-## 🛠 Tech Stack
-
-**Languages**
-<br/>
-<img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C"/>
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"/>
-<img src="https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=csharp&logoColor=white" alt="C#"/>
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-<img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
-
-**Web & Database**
-<br/>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
-<img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle"/>
-<img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET"/>
-
-**Tools**
-<br/>
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-<img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code"/>
-<img src="https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white" alt="XAMPP"/>
-
----
-
-## 📊 GitHub Analytics
-
-<div align="center">
-
-  <a href="https://github.com/asadbinjafor?tab=repositories">
-    <img src="https://streak-stats.demolab.com/?user=asadbinjafor&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub contribution streak"/>
-  </a>
-
-</div>
-
----
-
-## 🏅 Highlights
-
-- ✅ Full-stack web projects with **PHP, MySQL, JavaScript**
-- ✅ Enterprise & OOP projects in **Java** and **C#/.NET**
-- ✅ Database design with **Oracle SQL** and **MySQL**
-- ✅ Computer graphics project with **C++, OpenGL, GLUT**
-- ✅ Certifications in **Software Testing, Front-End Dev, DevOps & AI Literacy**
-- ✅ Tech event leadership at **AIUB Computer Club**
-
----
-
-## 🤝 Connect With Me
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg" />
+  <img src="./assets/hero.svg" width="100%" alt="Asad's animated terminal: portrait, ASCII art, Java and TypeScript. Final-semester CSE student at AIUB, CGPA 3.65/4.00, based in Dhaka, Bangladesh. Full Stack Web Developer working with React, Next.js, NestJS, PHP, PostgreSQL, MySQL and Oracle." />
+</picture>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-  <a href="https://github.com/asadbinjafor"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
-  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="https://img.shields.io/badge/Portfolio-8B6CEF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
-  <a href="mailto:asadbinjafor@gmail.com"><img src="https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-  <a href="https://www.facebook.com/mohammadasadbinjafor"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"/></a>
-  <a href="https://www.instagram.com/asad________01"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
+  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="./assets/link-portfolio.svg" height="36" alt="Visit my portfolio" /></a>
+  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="./assets/link-linkedin.svg" height="36" alt="Connect on LinkedIn" /></a>
+  <a href="mailto:asadbinjafor@gmail.com"><img src="./assets/link-email.svg" height="36" alt="Email asadbinjafor@gmail.com" /></a>
+  <a href="https://drive.google.com/file/d/1PIp3iko0equc8etPoYXMGmbSavgNsMyw/view"><img src="./assets/link-resume.svg" height="36" alt="Read my resume" /></a>
 </p>
 
----
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/stats-mobile.svg" />
+  <img src="./assets/stats.svg" width="100%" alt="GitHub activity snapshot dated October 20, 2026: contributions, public repositories, longest contribution streak, and repository counts by primary language." />
+</picture>
 
-<div align="center">
+<img src="./assets/activity.svg" width="100%" alt="My GitHub contribution history from October 19, 2025 to October 20, 2026, with a decorative animated snake moving across the real activity grid." />
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=8b6cef&height=80&section=footer"/>
+<sub>Activity snapshot: **20 October 2026** · Language mix counts repositories by their primary language.</sub>
 
-*"I turn real-world problems into clean, purposeful software."*
+## `01` &nbsp; About me
 
-⭐️ From **[asadbinjafor](https://github.com/asadbinjafor)**
+I'm **Mohammad Asad Bin Jafor**, a final-semester **Computer Science & Engineering student at AIUB** and a **Full Stack Web Developer** based in Dhaka, Bangladesh.
 
-</div>
+I build practical web applications and database-driven systems, from multi-role e-commerce platforms to inventory and sales tools. My work combines **Next.js, React, NestJS, TypeScript, PHP and relational databases**, alongside object-oriented projects in **Java and C#/.NET**.
+
+- **Education:** BSc in Computer Science & Engineering, AIUB · 2023–present · **CGPA 3.65/4.00**
+- **Current focus:** Full-stack development, software testing, system analysis and explainable AI
+- **Community:** AIUB Computer Club member · NASA Space Apps volunteer
+- **Open to:** Internships, junior developer roles and project collaboration
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/research-mobile.svg" />
+  <img src="./assets/research.svg" width="100%" alt="Ongoing final-semester thesis: Explainable AI-Based Pothole Detection and Severity Assessment for Road Maintenance." />
+</picture>
+
+## `02` &nbsp; Tech stack
+
+**Languages**
+
+<img src="./assets/stack-languages.svg" width="500" alt="C, C++, C#, Java, Python, PHP, JavaScript, TypeScript" />
+
+**Frontend**
+
+<img src="./assets/stack-frontend.svg" width="372" alt="HTML5, CSS3, React, Next.js, Tailwind CSS, Bootstrap" />
+
+**Backend & databases**
+
+<img src="./assets/stack-backend.svg" width="244" alt="NestJS, .NET, MySQL, PostgreSQL" />
+
+`Oracle Database` · `Microsoft SQL Server` · `PL/SQL` · `TypeORM` · `REST APIs` · `JWT`
+
+**Development, design & deployment**
+
+<img src="./assets/stack-tools.svg" width="500" alt="Git, GitHub, VS Code, Visual Studio, Postman, Figma, Vercel, Supabase" />
+
+`Jira` · `Jest` · `XAMPP` · `Draw.io` · `UML` · `Requirements Engineering` · `Software Testing`
+
+## `03` &nbsp; Selected projects
+
+| Project | What I built / am building | Stack |
+| :--- | :--- | :--- |
+| **[Tech Trolley](https://github.com/asadbinjafor/Tech-Trolley-Mobile-Shop-Inventory-and-Internal-Sales-Management-System)** | **Ongoing.** A multi-role mobile-shop inventory and internal sales platform. | Next.js · NestJS · TypeScript · PostgreSQL |
+| **[Programming Contest Management](https://github.com/asadbinjafor/PROGRAMMING-CONTEST-MANAGEMENT-SYSTEM)** | A database-backed programming contest management system. | PHP · Oracle · OCI8 · PL/SQL |
+| **[Online Medical Shop](https://github.com/asadbinjafor/Online-Medical-Shop-Web-Tech)** | Prescription/OTC browsing, order tracking and admin inventory across **10 modules and 18+ tables**. | PHP · MySQL · JavaScript |
+| **[Online Mobile Shop](https://github.com/asadbinjafor/Mobile_Shop)** | A **20+ page** e-commerce system with product filtering, role-based sessions, stock tracking and invoices. | PHP · MySQL · JavaScript |
+| **[AgriTech Village](https://github.com/asadbinjafor/AgriTech-Village-Management-System-OOP2)** | Farmer, land, crop, inventory and harvest management using **15+ classes and six modules**. | C# · .NET · Windows Forms |
+| **[3D City, Castle & Village](https://github.com/asadbinjafor/Interactive-3D-Simulation-of-City-Castle-and-Village-Environments-Using-Computer-Graphics)** | Three interactive scenes with **50+ objects**, camera movement, lighting and animation. | C++ · OpenGL · GLUT |
+
+<details>
+<summary><strong>More work: requirements engineering, Java, databases and file systems</strong></summary>
+
+<br />
+
+- **[TrolleyHub](https://github.com/asadbinjafor/TROLLEYHUB---A-Centralized-Inventory-and-Sales-Management-System-SRE-REPORT):** Requirements engineering, UML and ER modeling, feasibility analysis, QA and project planning.
+- **[Sporting Sphere Complex](https://github.com/asadbinjafor/JAVA-PROJECT--Sporting-Sphere-complex):** A Java/OOP sports facility management project.
+- **[Course Management System](https://github.com/asadbinjafor/SQL-COURSE-MANAGEMENT-SYSTEM-PROJECT):** Relational database work for students, courses, grades and schedules.
+- **[FTP Server Web Application](https://github.com/asadbinjafor/FTP_SERVER_WEB_TECH):** Authenticated uploads/downloads, directory navigation, permissions, logs and transfer-error handling.
+
+</details>
+
+<p align="center">
+  <a href="https://github.com/asadbinjafor?tab=repositories"><img src="./assets/link-github.svg" height="36" alt="Browse all my GitHub projects" /></a>
+</p>
+
+## `04` &nbsp; Engineering focus
+
+| Area | Experience & current focus |
+| :--- | :--- |
+| **Full-stack applications** | Multi-role interfaces, REST APIs, authentication and database-backed workflows |
+| **Database systems** | Relational modeling, SQL, normalization, Oracle, MySQL and PostgreSQL |
+| **Software engineering** | Requirements analysis, UML, OOP, technical documentation and testing |
+| **AI & computer vision** | Academic learning and ongoing explainable-AI pothole detection research |
+
+## `05` &nbsp; Learning & community
+
+**Selected training**
+
+- Front End Development, Software Testing and Web Development with ChatGPT — **Simplilearn SkillUP, 2026**
+- Code to Cloud: Practical DevOps with AWS — **Cloudly Infotech, 2025**
+- Edit and Transform Content with Microsoft 365 Copilot — **Microsoft, 2025**
+- IT Essentials: PC Hardware and Software — **Cisco Networking Academy, 2023**
+
+**Beyond the code**
+
+- **General Member, AIUB Computer Club** — 2023–present
+- **NASA International Space Apps Challenge** — local volunteer, 2024 & 2025
+- **AIUB Cyber Gaming Fest** — organizer, 2025
+- **MOS Bangladesh Championship** — volunteer, 2025
+- **Broadband Expo** — project-showcase volunteer, 2026
+
+<details>
+<summary><strong>Earlier education</strong></summary>
+
+<br />
+
+- **HSC, Science:** Hazera Taju University & College, Chattogram · 2021 · **GPA 4.92/5.00**
+- **SSC, Science:** Jorarjong Buddha High School · 2019 · **GPA 4.83/5.00**
+
+</details>
+
+<br />
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/footer-mobile.svg" />
+  <img src="./assets/footer.svg" width="100%" alt="Let's build something useful. Open to internships, junior roles and project collaboration." />
+</picture>
+
+<p align="center">
+  <a href="mailto:asadbinjafor@gmail.com"><img src="./assets/link-email.svg" height="36" alt="Email me" /></a>
+  <a href="https://www.linkedin.com/in/mohammadasadbinjafor/"><img src="./assets/link-linkedin.svg" height="36" alt="LinkedIn" /></a>
+  <a href="https://asadbinjafor.github.io/Asad_Portfolio/"><img src="./assets/link-portfolio.svg" height="36" alt="Portfolio" /></a>
+  <a href="https://www.facebook.com/mohammadasadbinjafor"><img src="./assets/link-facebook.svg" height="36" alt="Facebook" /></a>
+  <a href="https://www.instagram.com/asad________01"><img src="./assets/link-instagram.svg" height="36" alt="Instagram" /></a>
+</p>
+
+<p align="center"><sub><strong>Build with purpose. Learn continuously.</strong></sub></p>
