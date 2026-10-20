@@ -53,7 +53,8 @@ def save(name, data):
 
 
 def heading():
-    b = text(500, 28, "ASADBINJAFOR / DEVELOPER PROFILE", 13, CYAN, 'text-anchor="middle" letter-spacing="3"')
+    b = rect(10, 0, 980, 159, BG, radius=12)
+    b += text(500, 28, "ASADBINJAFOR / DEVELOPER PROFILE", 13, CYAN, 'text-anchor="middle" letter-spacing="3"')
     b += text(500, 81, "MOHAMMAD ASAD BIN JAFOR", 38, WHITE, 'text-anchor="middle" font-weight="700" letter-spacing="1"')
     for i, label in enumerate(["Full Stack Web Developer", "CSE @ AIUB  /  Software Engineering", "Building purposeful, practical software"]):
         b += f'<g class="headline h{i}">' + text(500, 121, label, 20, CYAN, 'text-anchor="middle"') + "</g>"
@@ -64,7 +65,8 @@ def heading():
 @keyframes head2{0%,64%,98%,100%{opacity:0}68%,94%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.headline{animation:none}.h0{opacity:1}.h1,.h2{opacity:0}}'''
     save("heading.svg", svg(1000, 160, "Mohammad Asad Bin Jafor — Full Stack Web Developer", b, css))
-    mobile = text(250, 27, "ASADBINJAFOR / DEVELOPER", 12, CYAN, 'text-anchor="middle" letter-spacing="2"')
+    mobile = rect(10, 0, 480, 187, BG, radius=12)
+    mobile += text(250, 27, "ASADBINJAFOR / DEVELOPER", 12, CYAN, 'text-anchor="middle" letter-spacing="2"')
     mobile += text(250, 77, "MOHAMMAD ASAD", 32, WHITE, 'text-anchor="middle" font-weight="700"')
     mobile += text(250, 113, "BIN JAFOR", 32, WHITE, 'text-anchor="middle" font-weight="700"')
     mobile += text(250, 151, "Full Stack Web Developer", 17, CYAN, 'text-anchor="middle"')
