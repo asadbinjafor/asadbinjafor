@@ -31,14 +31,15 @@ class VisualMapTests(unittest.TestCase):
         fallback=root.find('.//svg:use[@class="map-still"]',ns)
         motion=root.find('.//svg:path[@class="map-motion"]/svg:animate',ns)
         self.assertIsNotNone(fallback)
-        self.assertEqual(fallback.get("href"),"#portrait-tones")
-        tones=root.find('.//svg:g[@id="portrait-tones"]',ns)
+        self.assertEqual(fallback.get("href"),"#portrait-detail")
+        tones=root.find('.//svg:g[@id="portrait-detail"]',ns)
         self.assertIsNotNone(tones)
-        self.assertGreater(len(tones),16)
+        self.assertEqual(tones[0].get("transform"),"scale(.5)")
+        self.assertGreater(tones[0].get("d").count("M"),20000)
         self.assertEqual(len(motion.get("values").split(";")),len(motion.get("keyTimes").split(";")))
         self.assertIn("prefers-reduced-motion:reduce",visual_map.MOTION_CSS)
 
-    def test_smooth_portrait_is_hidden_during_all_logo_holds(self):
+    def test_detailed_portrait_is_hidden_during_all_logo_holds(self):
         import xml.etree.ElementTree as ET
         root=ET.fromstring('<svg xmlns="http://www.w3.org/2000/svg">'+visual_map.render(0,0,400,492)+'</svg>')
         ns={"svg":"http://www.w3.org/2000/svg"}

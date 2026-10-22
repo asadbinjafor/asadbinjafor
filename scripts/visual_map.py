@@ -35,34 +35,35 @@ CONTOUR = [
 ]
 
 
-@lru_cache(maxsize=1)
-def portrait_sample():
+@lru_cache(maxsize=2)
+def portrait_sample(detail=1):
     """Sample the original photograph once, preserving its facial geometry."""
     original = Image.open(ROOT / "assets/asad.png").convert("RGB")
     mask = Image.new("L", original.size)
     ImageDraw.Draw(mask).polygon(CONTOUR, fill=255)
     crop = (120, 0, 966, 1040)
-    color = original.crop(crop).resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
+    width, height = WIDTH*detail, HEIGHT*detail
+    color = original.crop(crop).resize((width, height), Image.Resampling.LANCZOS)
     sample = color.convert("L")
-    mask = mask.crop(crop).resize((WIDTH, HEIGHT), Image.Resampling.NEAREST)
+    mask = mask.crop(crop).resize((width, height), Image.Resampling.NEAREST)
     # Remove only neutral wall pixels connected to the outside. Internal gray
     # shirt and suit details remain enclosed by the subject's silhouette.
-    queue=deque([(x,0) for x in range(WIDTH)]+[(x,HEIGHT-1) for x in range(WIDTH)]
-                +[(0,y) for y in range(HEIGHT)]+[(WIDTH-1,y) for y in range(HEIGHT)])
+    queue=deque([(x,0) for x in range(width)]+[(x,height-1) for x in range(width)]
+                +[(0,y) for y in range(height)]+[(width-1,y) for y in range(height)])
     visited=set()
     while queue:
         x,y=queue.popleft()
         if (x,y) in visited:continue
         visited.add((x,y))
-        source_x=120+x*846/WIDTH
-        source_y=y*1040/HEIGHT
+        source_x=120+x*846/width
+        source_y=y*1040/height
         if (source_y>575 and 410<source_x<690) or (source_y>700 and 350<source_x<750):
             continue
         rgb=color.getpixel((x,y))
         if max(rgb)-min(rgb)>=22 or sum(rgb)/3<=105:continue
         mask.putpixel((x,y),0)
         queue.extend((xx,yy) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))
-                     if 0<=xx<WIDTH and 0<=yy<HEIGHT and (xx,yy) not in visited)
+                     if 0<=xx<width and 0<=yy<height and (xx,yy) not in visited)
     return sample, mask
 
 
@@ -98,28 +99,40 @@ def portrait_pixels():
 
 
 @lru_cache(maxsize=1)
-def portrait_tones():
-    """Keep continuous facial shading in 32 compact, photo-derived SVG layers."""
-    sample, mask = portrait_sample()
-    # Feather the cutout edge without softening eyes, hair or facial features.
-    coverage = mask.filter(ImageFilter.GaussianBlur(.55))
-    layers = [[] for _ in range(33)]
-    for y in range(HEIGHT):
-        tones = [round((sample.getpixel((x,y))/255)**.85
-                       * coverage.getpixel((x,y))/255 * 32)
-                 for x in range(WIDTH)]
+def portrait_detail():
+    """Use finer photo-derived dots, without flat shading or a bright outline."""
+    sample, mask = portrait_sample(detail=2)
+    width, height = sample.size
+    coverage = mask.filter(ImageFilter.GaussianBlur(.6))
+    values = [[max(0,min(1,(sample.getpixel((x,y))-12)/205))**.9
+               * coverage.getpixel((x,y))/255 for x in range(width)]
+              for y in range(height)]
+    pixels = set()
+    # Alternating scan direction avoids the horizontal streaks of the old
+    # one-direction diffusion. Four times as many samples preserve small features.
+    for y in range(height):
+        direction = 1 if y%2==0 else -1
+        for x in (range(width) if direction==1 else range(width-1,-1,-1)):
+            if not coverage.getpixel((x,y)):continue
+            value=values[y][x]
+            lit=int(value>=.5)
+            if lit:pixels.add((x,y))
+            error=value-lit
+            for dx,dy,weight in ((direction,0,7/16),(-direction,1,3/16),(0,1,5/16),(direction,1,1/16)):
+                xx,yy=x+dx,y+dy
+                if 0<=xx<width and yy<height and coverage.getpixel((xx,yy)):
+                    values[yy][xx]+=error*weight
+    marks=[]
+    for y in range(height):
         x = 0
-        while x < WIDTH:
-            tone = tones[x]
-            end = x + 1
-            while end < WIDTH and tones[end] == tone:
-                end += 1
-            if tone:
-                layers[tone].append((x,y,end-x))
-            x = end
-    return ''.join(f'<path fill="url(#portrait-ink)" opacity="{tone/32:.5f}" '
-                   f'd="{path_data(marks)}"/>'
-                   for tone,marks in enumerate(layers) if marks)
+        while x < width:
+            if (x,y) not in pixels:
+                x+=1;continue
+            end=x+1
+            while end<width and (end,y) in pixels:end+=1
+            marks.append((x,y,end-x))
+            x=end
+    return f'<path transform="scale(.5)" fill="url(#portrait-detail-ink)" d="{path_data(marks)}"/>'
 
 
 def svg_contours(path):
@@ -259,16 +272,17 @@ def render(x,y,width,height,static_scene=None):
 <linearGradient id="portrait-ink" x1="0" y1="0" x2="0" y2="{HEIGHT}" gradientUnits="userSpaceOnUse">
 <stop stop-color="#89a5ff"/><stop offset=".36" stop-color="#b19aff"/><stop offset=".8" stop-color="#a78bfa"/><stop offset="1" stop-color="#6edee8"/>
 </linearGradient>
-<g id="portrait-tones">{portrait_tones()}</g>
+<linearGradient id="portrait-detail-ink" href="#portrait-ink" gradientTransform="scale(2)"/>
+<g id="portrait-detail">{portrait_detail()}</g>
 <clipPath id="portrait-clip"><rect x="{x}" y="{y}" width="{width}" height="{height}" rx="8"/></clipPath>
 </defs>
 <rect x="{x}" y="{y}" width="{width}" height="{height}" rx="8" fill="#090e1d" stroke="#27b9ce" stroke-opacity=".5"/>
 <g clip-path="url(#portrait-clip)"><g transform="translate({x} {art_y}) scale({scale})">'''
     if static_scene:
-        b+=('<use href="#portrait-tones"/>' if static_scene=="portrait"
+        b+=('<use href="#portrait-detail"/>' if static_scene=="portrait"
             else f'<path fill="{fill}" d="{shapes[static_scene]}"/>')
     else:
-        b+='<use class="map-still" href="#portrait-tones"/>'
+        b+='<use class="map-still" href="#portrait-detail"/>'
         b+=f'<path class="map-motion" opacity="0" fill="{fill}" d="{shapes["portrait"]}">'
         times=";".join(f"{t/DURATION:.6g}" for t,_ in TIMELINE)
         values=";".join(shapes[key] for _,key in TIMELINE)
@@ -277,7 +291,7 @@ def render(x,y,width,height,static_scene=None):
         # The morph itself keeps its existing matching particle topology.
         fade_times=";".join(f"{t/DURATION:.6g}" for t in (0,9.4,10,28,28.6,30))
         b+=f'<animate attributeName="opacity" dur="{DURATION}s" repeatCount="indefinite" keyTimes="{fade_times}" values="0;0;1;1;0;0"/></path>'
-        b+=f'<use class="map-portrait" href="#portrait-tones"><animate attributeName="opacity" dur="{DURATION}s" repeatCount="indefinite" keyTimes="{fade_times}" values="1;1;0;0;1;1"/></use>'
+        b+=f'<use class="map-portrait" href="#portrait-detail"><animate attributeName="opacity" dur="{DURATION}s" repeatCount="indefinite" keyTimes="{fade_times}" values="1;1;0;0;1;1"/></use>'
     for key,label in CAPTIONS.items():
         if static_scene and static_scene!=key:continue
         opacity="1" if static_scene else "0"
