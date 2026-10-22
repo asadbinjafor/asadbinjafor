@@ -35,8 +35,9 @@ CONTOUR = [
 ]
 
 
-def portrait_pixels():
-    """Dither luminance and fine edges into one-pixel vector marks."""
+@lru_cache(maxsize=1)
+def portrait_sample():
+    """Sample the original photograph once, preserving its facial geometry."""
     original = Image.open(ROOT / "assets/asad.png").convert("RGB")
     mask = Image.new("L", original.size)
     ImageDraw.Draw(mask).polygon(CONTOUR, fill=255)
@@ -62,6 +63,12 @@ def portrait_pixels():
         mask.putpixel((x,y),0)
         queue.extend((xx,yy) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))
                      if 0<=xx<WIDTH and 0<=yy<HEIGHT and (xx,yy) not in visited)
+    return sample, mask
+
+
+def portrait_pixels():
+    """Dither the photograph only for the moving particle transitions."""
+    sample, mask = portrait_sample()
     edges = sample.filter(ImageFilter.FIND_EDGES)
     values = [
         [min(1.0, max(0, (sample.getpixel((x,y))-34)/165)**1.1
@@ -88,6 +95,31 @@ def portrait_pixels():
     pixels.update((x,y) for y in range(1,HEIGHT-1) for x in range(1,WIDTH-1)
                   if outline.getpixel((x,y)) > 200)
     return pixels
+
+
+@lru_cache(maxsize=1)
+def portrait_tones():
+    """Keep continuous facial shading in 32 compact, photo-derived SVG layers."""
+    sample, mask = portrait_sample()
+    # Feather the cutout edge without softening eyes, hair or facial features.
+    coverage = mask.filter(ImageFilter.GaussianBlur(.55))
+    layers = [[] for _ in range(33)]
+    for y in range(HEIGHT):
+        tones = [round((sample.getpixel((x,y))/255)**.85
+                       * coverage.getpixel((x,y))/255 * 32)
+                 for x in range(WIDTH)]
+        x = 0
+        while x < WIDTH:
+            tone = tones[x]
+            end = x + 1
+            while end < WIDTH and tones[end] == tone:
+                end += 1
+            if tone:
+                layers[tone].append((x,y,end-x))
+            x = end
+    return ''.join(f'<path fill="url(#portrait-ink)" opacity="{tone/32:.5f}" '
+                   f'd="{path_data(marks)}"/>'
+                   for tone,marks in enumerate(layers) if marks)
 
 
 def svg_contours(path):
@@ -213,7 +245,7 @@ def scenes():
 MOTION_CSS = """
 .map-still{display:none}
 @media(prefers-reduced-motion:reduce){
-  .map-motion,.map-caption{display:none}.map-still{display:inline}
+  .map-motion,.map-portrait,.map-caption{display:none}.map-still{display:inline}
 }
 """
 
@@ -227,18 +259,25 @@ def render(x,y,width,height,static_scene=None):
 <linearGradient id="portrait-ink" x1="0" y1="0" x2="0" y2="{HEIGHT}" gradientUnits="userSpaceOnUse">
 <stop stop-color="#89a5ff"/><stop offset=".36" stop-color="#b19aff"/><stop offset=".8" stop-color="#a78bfa"/><stop offset="1" stop-color="#6edee8"/>
 </linearGradient>
+<g id="portrait-tones">{portrait_tones()}</g>
 <clipPath id="portrait-clip"><rect x="{x}" y="{y}" width="{width}" height="{height}" rx="8"/></clipPath>
 </defs>
 <rect x="{x}" y="{y}" width="{width}" height="{height}" rx="8" fill="#090e1d" stroke="#27b9ce" stroke-opacity=".5"/>
 <g clip-path="url(#portrait-clip)"><g transform="translate({x} {art_y}) scale({scale})">'''
     if static_scene:
-        b+=f'<path fill="{fill}" d="{shapes[static_scene]}"/>'
+        b+=('<use href="#portrait-tones"/>' if static_scene=="portrait"
+            else f'<path fill="{fill}" d="{shapes[static_scene]}"/>')
     else:
-        b+=f'<path class="map-still" fill="{fill}" d="{shapes["portrait"]}"/>'
-        b+=f'<path class="map-motion" fill="{fill}" d="{shapes["portrait"]}">'
+        b+='<use class="map-still" href="#portrait-tones"/>'
+        b+=f'<path class="map-motion" opacity="0" fill="{fill}" d="{shapes["portrait"]}">'
         times=";".join(f"{t/DURATION:.6g}" for t,_ in TIMELINE)
         values=";".join(shapes[key] for _,key in TIMELINE)
-        b+=f'<animate attributeName="d" dur="{DURATION}s" repeatCount="indefinite" calcMode="linear" keyTimes="{times}" values="{values}"/></path>'
+        b+=f'<animate attributeName="d" dur="{DURATION}s" repeatCount="indefinite" calcMode="linear" keyTimes="{times}" values="{values}"/>'
+        # Crossfade only while both representations are in the portrait shape.
+        # The morph itself keeps its existing matching particle topology.
+        fade_times=";".join(f"{t/DURATION:.6g}" for t in (0,9.4,10,28,28.6,30))
+        b+=f'<animate attributeName="opacity" dur="{DURATION}s" repeatCount="indefinite" keyTimes="{fade_times}" values="0;0;1;1;0;0"/></path>'
+        b+=f'<use class="map-portrait" href="#portrait-tones"><animate attributeName="opacity" dur="{DURATION}s" repeatCount="indefinite" keyTimes="{fade_times}" values="1;1;0;0;1;1"/></use>'
     for key,label in CAPTIONS.items():
         if static_scene and static_scene!=key:continue
         opacity="1" if static_scene else "0"

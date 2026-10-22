@@ -6,9 +6,10 @@ This profile uses GitHub Flavored Markdown and repository-hosted SVG assets. It 
 
 - Edit `README.md` for the biography, project links, training and community activities.
 - Edit the information rows in `scripts/build_profile.py` for the terminal hero.
-- `assets/asad.png` is the supplied, unmodified portrait. `scripts/visual_map.py` samples its luminance and edges into native SVG pixel marks, with the wall background excluded. It preserves the supplied face rather than generating a replacement.
+- `assets/asad.png` is the supplied, unmodified portrait. `scripts/visual_map.py` samples its luminance into 32 native SVG shading layers during portrait holds, with the wall background excluded and the cutout edge feathered. Facial geometry and feature detail come directly from the supplied photo. Pixel marks are used during the transitions. It preserves the supplied face rather than generating a replacement.
 - Run `python scripts/build_profile.py --hero-only` after changing the portrait or hero. The generator requires Pillow, builds desktop/mobile panels, and updates their README cache versions. Run without the flag to rebuild all panels.
 - The Visual Map uses a tall 400×492 frame and a 30-second SVG path morph: portrait → React → NestJS → PostgreSQL → portrait. The portrait stays visible for 12 seconds across the loop boundary; each logo holds for 3 seconds, with the remaining time used for smooth transitions. Small captions identify the frontend, backend and database roles. All phases have matching path commands so the pixels move continuously. The icons use the existing licensed skill-icon paths without their square backgrounds.
+- The smooth portrait and particle portrait crossfade over 0.6 seconds before and after the morph, while their shapes are aligned. The smooth portrait is fully hidden during every logo. The shading layers are shared by the animated and static versions to keep the SVG compact.
 - The animations honor `prefers-reduced-motion`. The portrait and all key information remain visible when animations are disabled.
 
 ## Refresh GitHub activity

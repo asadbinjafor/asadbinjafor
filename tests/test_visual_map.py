@@ -28,12 +28,29 @@ class VisualMapTests(unittest.TestCase):
         import xml.etree.ElementTree as ET
         root=ET.fromstring('<svg xmlns="http://www.w3.org/2000/svg">'+visual_map.render(0,0,400,492)+'</svg>')
         ns={"svg":"http://www.w3.org/2000/svg"}
-        fallback=root.find('.//svg:path[@class="map-still"]',ns)
+        fallback=root.find('.//svg:use[@class="map-still"]',ns)
         motion=root.find('.//svg:path[@class="map-motion"]/svg:animate',ns)
         self.assertIsNotNone(fallback)
-        self.assertEqual(fallback.get("d"),visual_map.scenes()["portrait"])
+        self.assertEqual(fallback.get("href"),"#portrait-tones")
+        tones=root.find('.//svg:g[@id="portrait-tones"]',ns)
+        self.assertIsNotNone(tones)
+        self.assertGreater(len(tones),16)
         self.assertEqual(len(motion.get("values").split(";")),len(motion.get("keyTimes").split(";")))
         self.assertIn("prefers-reduced-motion:reduce",visual_map.MOTION_CSS)
+
+    def test_smooth_portrait_is_hidden_during_all_logo_holds(self):
+        import xml.etree.ElementTree as ET
+        root=ET.fromstring('<svg xmlns="http://www.w3.org/2000/svg">'+visual_map.render(0,0,400,492)+'</svg>')
+        ns={"svg":"http://www.w3.org/2000/svg"}
+        fade=root.find('.//svg:use[@class="map-portrait"]/svg:animate',ns)
+        times=list(map(float,fade.get("keyTimes").split(";")))
+        values=list(map(float,fade.get("values").split(";")))
+        for t,scene in visual_map.TIMELINE:
+            if scene=="portrait":continue
+            position=t/visual_map.DURATION
+            segment=next(i for i in range(len(times)-1) if times[i]<=position<times[i+1])
+            self.assertEqual(values[segment:segment+2],[0,0])
+        self.assertEqual(values[0],values[-1])
 
     def test_stroked_paths_preserve_open_ends_and_close_only_on_z(self):
         open_path=visual_map.svg_contours("M10 20L30 40L50 20")[0]

@@ -6,8 +6,8 @@
 </p>
 
 <picture>
-  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg?v=df83a7566d3e" />
-  <img src="./assets/hero.svg?v=ce2f2e21d2ea" width="100%" alt="Asad's animated terminal: a violet and cyan pixel portrait morphing into React (frontend), NestJS (backend) and PostgreSQL (database). Final-semester CSE student at AIUB, CGPA 3.65/4.00, based in Dhaka, Bangladesh. Full Stack Web Developer working with React, Next.js, NestJS, PHP, PostgreSQL, MySQL and Oracle." />
+  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg?v=799002d3c629" />
+  <img src="./assets/hero.svg?v=093f2c78c555" width="100%" alt="Asad's animated terminal: a smooth violet and cyan portrait transitioning through pixel morphs into React (frontend), NestJS (backend) and PostgreSQL (database). Final-semester CSE student at AIUB, CGPA 3.65/4.00, based in Dhaka, Bangladesh. Full Stack Web Developer working with React, Next.js, NestJS, PHP, PostgreSQL, MySQL and Oracle." />
 </picture>
 
 <p align="center">
