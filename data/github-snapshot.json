@@ -1,7 +1,7 @@
 {
   "username": "asadbinjafor",
   "updated": "2026-10-25",
-  "updated_at": "2026-10-25T02:52:00+06:00",
+  "updated_at": "2026-10-25T10:44:00+06:00",
   "public_repos": 28,
   "followers": 2,
   "stars": 8,
@@ -16,41 +16,6 @@
     "Jupyter Notebook": 1
   },
   "contributions": [
-    {
-      "date": "2025-10-19",
-      "level": 0,
-      "count": 0
-    },
-    {
-      "date": "2025-10-20",
-      "level": 2,
-      "count": 2
-    },
-    {
-      "date": "2025-10-21",
-      "level": 0,
-      "count": 0
-    },
-    {
-      "date": "2025-10-22",
-      "level": 0,
-      "count": 0
-    },
-    {
-      "date": "2025-10-23",
-      "level": 0,
-      "count": 0
-    },
-    {
-      "date": "2025-10-24",
-      "level": 0,
-      "count": 0
-    },
-    {
-      "date": "2025-10-25",
-      "level": 0,
-      "count": 0
-    },
     {
       "date": "2025-10-26",
       "level": 0,
@@ -1868,6 +1833,11 @@
     },
     {
       "date": "2026-10-24",
+      "level": 0,
+      "count": 0
+    },
+    {
+      "date": "2026-10-25",
       "level": 0,
       "count": 0
     }
