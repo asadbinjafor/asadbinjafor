@@ -1,8 +1,8 @@
 {
   "username": "asadbinjafor",
-  "updated": "2026-11-14",
-  "updated_at": "2026-11-14T12:26:00+06:00",
-  "public_repos": 29,
+  "updated": "2026-11-15",
+  "updated_at": "2026-11-15T00:05:00+06:00",
+  "public_repos": 30,
   "followers": 3,
   "stars": 9,
   "languages": {
@@ -10,6 +10,7 @@
     "C#": 1,
     "Python": 2,
     "HTML": 1,
+    "JavaScript": 1,
     "C++": 2,
     "PHP": 10,
     "Java": 2,
@@ -1868,8 +1869,8 @@
     },
     {
       "date": "2026-11-14",
-      "level": 0,
-      "count": 0
+      "level": 1,
+      "count": 2
     }
   ],
   "sources": [
