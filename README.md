@@ -18,13 +18,13 @@
 </p>
 
 <picture>
-  <source media="(max-width: 600px)" srcset="./assets/stats-mobile.svg?v=261887bf4455" />
-  <img src="./assets/stats.svg?v=c1161df4c3e4" width="100%" alt="GitHub activity snapshot dated November 27, 2026: contributions, public repositories, longest contribution streak, and repository counts by primary language." />
+  <source media="(max-width: 600px)" srcset="./assets/stats-mobile.svg?v=016c77549ab3" />
+  <img src="./assets/stats.svg?v=5baafc98e0eb" width="100%" alt="GitHub activity snapshot dated November 28, 2026: contributions, public repositories, longest contribution streak, and repository counts by primary language." />
 </picture>
 
-<img src="./assets/activity.svg?v=a0843048adec" width="100%" alt="My GitHub contribution history from November 23, 2025 to November 27, 2026, with a decorative animated snake moving across the real activity grid." />
+<img src="./assets/activity.svg?v=d1c3e61ea018" width="100%" alt="My GitHub contribution history from November 23, 2025 to November 27, 2026, with a decorative animated snake moving across the real activity grid." />
 
-<sub>Auto-updated every 6 hours · Last refreshed: **27 November 2026, 14:37 BST (UTC+6)** · Language mix counts repositories by their primary language.</sub>
+<sub>Auto-updated every 6 hours · Last refreshed: **28 November 2026, 03:19 BST (UTC+6)** · Language mix counts repositories by their primary language.</sub>
 
 ## `01` &nbsp; About me
 
